@@ -1,0 +1,17 @@
+#' fsd: A package for Functional Spatial Data.
+#'
+#' The \code{fsd} package provides functions useful to handle the visualisation
+#' and analysis of functional spatial data on a grid with arbitrary dimension r.
+#'
+#' @section Plot functions: They plot.
+#'
+#' @section SFPCA functions: They perform spectral principal components
+#'   analysis.
+#'
+#' @section Example Data: Temperature data \code{\link{temp}} from 1979 to 2017
+#'   in Wyoming with a spatial resolution of 0.5 degrees.
+#'
+#' @docType package
+#' @name fsd
+#' @useDynLib fsd
+NULL
