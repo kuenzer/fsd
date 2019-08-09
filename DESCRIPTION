@@ -8,13 +8,14 @@ Description: This package implements functional data on a grid of dimension r
     and the spectral principal components analysis.
 License: GPL-3
 Depends: 
-    R (>= 2.15.0),
+    R (>= 3.4.0),
     stats,
     graphics,
     fda,
     mvtnorm
 Imports:
-    Rcpp (>= 1.0.2)
+    Rcpp (>= 1.0.2),
+    RcppArmadillo
 LinkingTo: Rcpp, RcppArmadillo
 Encoding: UTF-8
 LazyData: false
