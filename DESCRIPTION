@@ -1,14 +1,14 @@
 Package: fsd
-Title: Functional Spatial Data: Spectral PCA
+Title: Functional Spatial Data: Spatial Functional PCA
 Version: 0.0.0.9001
 Date: 2019-08-08
 Author: Hormann S., Kuenzer T.
 Maintainer: Kuenzer T. <kuenzer@tugraz.at>
 Description: This package implements functional data on a grid of dimension r 
-    and the spectral principal components analysis.
+    and the spatial principal components analysis.
 License: GPL-3
 Depends: 
-    R (>= 3.4.0),
+    R (>= 3.5.1),
     stats,
     graphics,
     fda,
