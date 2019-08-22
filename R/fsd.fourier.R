@@ -6,6 +6,7 @@
 #' @param thlist list of frequencies.
 #' @return the Fourier transform of the covariances.
 #' @keywords fsd
+#' @importFrom Rcpp evalCpp
 #' @examples
 #' \dontrun{
 #' fsd.fourier(covs, thlist, lags)
