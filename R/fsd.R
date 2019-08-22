@@ -14,4 +14,5 @@
 #' @docType package
 #' @name fsd
 #' @useDynLib fsd
+#' @importFrom Rcpp evalCpp
 NULL
