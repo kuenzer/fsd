@@ -70,6 +70,8 @@ fsd.spectral.density = function (X, freq, q = NULL, na.rm = FALSE)
   else
     thlist = unfold(freq)
 
+  hlist = lapply(hlist, "-")
+
   Fth = fsd.fourier(Clist, hlist, thlist)$operators
 
   Fobj = list(operators = Fth, freq = thlist,
