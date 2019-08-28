@@ -61,7 +61,7 @@ fsd.sfarma = function (n, Sigma = NULL, ARfilter = NULL, MAfilter = NULL,
   if (!is.null(MAfilter) && !inherits(MAfilter, "fsd.filter"))
     stop("MAfilter needs to be a filter object.")
 
-  if (!is.numeric(noise))
+  if (!is.numeric(noise) || noise == 0)
     Z = array(t(rmvnorm(prod(n + 2*burnin), sigma = Sigma)),
               dim = c(d, n + 2*burnin))
   else
