@@ -181,7 +181,7 @@ as.fd.fsd.fd = function (x, ...)
 
   args = lapply( eval(substitute(alist(...))) ,
                  function(y) {if (is.call(y))
-                                eval(y)
+                                eval(y, envir = parent.frame(n = 3))
                               else {
                                 if (length(y) > 1)
                                   y

@@ -26,7 +26,7 @@ fsd.spca.inverse = function (A, scores, mean.X = NULL)
     stop("Dimensions are not compatible: Filter lags and scores do not fit")
 
   if (dim(scores)[1] < dim(A$operators[[1]])[2]) {
-    warning("Less scores than PC filters provided. ",
+    message("Less scores than PC filters provided. ",
             "Remaining scores are assumed to be zero.")
     dimdiff = dim(A$operators[[1]])[2] - dim(scores)[1]
     scores = apply(scores, 2:length(dim(scores)),
