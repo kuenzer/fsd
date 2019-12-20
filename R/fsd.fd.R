@@ -177,8 +177,6 @@ as.fd.fsd.fd = function (x, ...)
 
 `[.fsd.fd` = function (fsdobj, ..., drop = TRUE)
 {
-  r = length(dim(fsdobj$coefs)) - 1
-
   args = lapply( eval(substitute(alist(...))) ,
                  function(y) {if (is.call(y))
                                 eval.parent(y, n = 3)
@@ -190,6 +188,8 @@ as.fd.fsd.fd = function (x, ...)
                                 else
                                   eval.parent(y, n = 3)
                               }})
+
+  r = length(dim(fsdobj$coefs)) - 1
 
   inds = c(TRUE, args)
   if (length(inds) == 1)
