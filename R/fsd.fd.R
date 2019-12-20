@@ -181,14 +181,14 @@ as.fd.fsd.fd = function (x, ...)
 
   args = lapply( eval(substitute(alist(...))) ,
                  function(y) {if (is.call(y))
-                                eval(y, envir = parent.frame(n = 3))
+                                eval.parent(y, n = 3)
                               else {
                                 if (length(y) > 1)
                                   y
                                 else if (nchar(as.character(y)) == 0)
                                   y
                                 else
-                                  eval(y)
+                                  eval.parent(y, n = 3)
                               }})
 
   inds = c(TRUE, args)
