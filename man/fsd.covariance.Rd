@@ -4,8 +4,7 @@
 \alias{fsd.covariance}
 \title{Estimate autocovariance operators}
 \usage{
-fsd.covariance(Y = NULL, h, centered = FALSE, na.rm = FALSE,
-  unbiased = FALSE)
+fsd.covariance(Y = NULL, h, centered = FALSE, na.rm = FALSE, unbiased = FALSE)
 }
 \arguments{
 \item{Y}{the functional spatial data. Either an fd object or an array.}

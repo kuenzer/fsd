@@ -4,9 +4,17 @@
 \alias{fsd.plot.filters}
 \title{Plot functional spatial filters}
 \usage{
-fsd.plot.filters(A, basisobj = NULL, gridsize = NULL, Npc = 3,
-  Lmax = 3, set.dims = NULL, main = NULL, xlab = NULL,
-  ylab = NULL)
+fsd.plot.filters(
+  A,
+  basisobj = NULL,
+  gridsize = NULL,
+  Npc = 3,
+  Lmax = 3,
+  set.dims = NULL,
+  main = NULL,
+  xlab = NULL,
+  ylab = NULL
+)
 }
 \arguments{
 \item{A}{the filters.}

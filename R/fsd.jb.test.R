@@ -7,6 +7,8 @@
 #' @param Npc the number of spectral principal components to use for the test.
 #' @param L the maximum lag to compute the covariance of the scores during the
 #'   computation of the autocovariances.
+#' @param var.method the method that is used to calculate the long-run variance
+#'   of the SFPC scores. Either "direct" or "integral".
 #' @return A list with components \item{T4}{the test statistic.}
 #'   \item{p.value}{the p-value.} \item{df}{the degrees of freedom.}
 #'   \item{T4.vector}{the vector of the test statistics for each single SPC.}
@@ -21,9 +23,9 @@
 #' fsd.jb.test(F, L)
 #' }
 
-fsd.jb.test = function (X.spca, Npc = NULL, L = NULL)
+fsd.jb.test = function (X.spca, Npc = NULL, L = NULL, var.method = "integral")
 {
-  if (is.null(X.spca$F))
+  if (is.null(X.spca$F) && var.method != "direct")
     stop("X.spca needs to contain the spectral density.")
   if (is.null(X.spca$scores))
     stop("X.spca needs to contain the SPC scores.")
@@ -44,11 +46,18 @@ fsd.jb.test = function (X.spca, Npc = NULL, L = NULL)
 
   if (is.null(L))
     L = dims - 1
+  else if (length(L) == 1)
+    L = rep(L,length(dims))
+  if (var.method == "direct") {
+    hlist = fsd:::unfold(lapply(L, function(h) {-h:h}))
+    Clist = sapply(hlist, FUN = fsd.covariance, Y = Y, centered = TRUE,
+                   simplify = "array")
+    C = apply(Clist, 3,diag)
+  } else
+    C = fsd.spca.cov(F = X.spca$F, L = L)$cov
 
-  C = fsd.spca.cov(F = X.spca$F, L = L)
-
-  F3 = apply(C$cov[1:Npc, , drop = FALSE]^3, 1, sum)
-  F4 = apply(C$cov[1:Npc, , drop = FALSE]^4, 1, sum)
+  F3 = apply(C[1:Npc, , drop = FALSE]^3, 1, sum)
+  F4 = apply(C[1:Npc, , drop = FALSE]^4, 1, sum)
 
   T4v = prod(dims) * ( mu3^2 / (6 *F3) + (mu4 - 3*mu2^2)^2 / (24 *F4)  )
 

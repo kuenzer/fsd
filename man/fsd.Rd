@@ -3,7 +3,6 @@
 \docType{package}
 \name{fsd}
 \alias{fsd}
-\alias{fsd-package}
 \title{fsd: A package for Functional Spatial Data.}
 \description{
 The \code{fsd} package provides functions useful to handle the visualisation

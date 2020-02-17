@@ -4,9 +4,18 @@
 \alias{fsd.sfarma}
 \title{Simulate a spatial functional ARMA process}
 \usage{
-fsd.sfarma(n, Sigma = NULL, ARfilter = NULL, MAfilter = NULL,
-  burnin = 30, basisobj = NULL, noise = "normal",
-  do.fixed.point = FALSE, max.iter = 50, eps = 1e-05)
+fsd.sfarma(
+  n,
+  Sigma = NULL,
+  ARfilter = NULL,
+  MAfilter = NULL,
+  burnin = 30,
+  basisobj = NULL,
+  noise = "normal",
+  do.fixed.point = FALSE,
+  max.iter = 50,
+  eps = 1e-05
+)
 }
 \arguments{
 \item{n}{the sample size.}

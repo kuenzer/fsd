@@ -2,7 +2,7 @@ Package: fsd
 Title: Functional Spatial Data: Spatial Functional PCA
 Version: 0.0.0.9001
 Date: 2019-08-08
-Author: Hormann S., Kuenzer T.
+Author: Hormann S., Kokoszka P., Kuenzer T.
 Maintainer: Kuenzer T. <kuenzer@tugraz.at>
 Description: This package implements functional data on a grid of dimension r 
     and the spatial principal components analysis.
@@ -17,4 +17,4 @@ Imports: Rcpp (>= 1.0.2)
 LinkingTo: Rcpp, RcppArmadillo
 Encoding: UTF-8
 LazyData: false
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

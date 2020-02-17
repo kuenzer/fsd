@@ -4,9 +4,17 @@
 \alias{fsd.plot.data}
 \title{Plot functional spatial data}
 \usage{
-fsd.plot.data(X, basisobj = NULL, gridsize = NULL, set.dims = NULL,
-  xlim = NULL, ylim = NULL, main = NULL, xlab = NULL,
-  ylab = NULL)
+fsd.plot.data(
+  X,
+  basisobj = NULL,
+  gridsize = NULL,
+  set.dims = NULL,
+  xlim = NULL,
+  ylim = NULL,
+  main = NULL,
+  xlab = NULL,
+  ylab = NULL
+)
 }
 \arguments{
 \item{X}{the functional spatial data. Either an fd object or an array, or a

@@ -4,8 +4,7 @@
 \alias{summary.fsd.filter}
 \title{Analyse functional spatial filters}
 \usage{
-\method{summary}{fsd.filter}(object, ..., use.norm = Inf,
-  make.plot = FALSE)
+\method{summary}{fsd.filter}(object, ..., use.norm = Inf, make.plot = FALSE)
 }
 \arguments{
 \item{object}{the filter.}

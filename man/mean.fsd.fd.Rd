@@ -4,8 +4,7 @@
 \alias{mean.fsd.fd}
 \title{Compute the mean of spatial functional data}
 \usage{
-\method{mean}{fsd.fd}(x, trim = 0, na.rm = FALSE, ...,
-  margins = NULL)
+\method{mean}{fsd.fd}(x, trim = 0, na.rm = FALSE, ..., margins = NULL)
 }
 \arguments{
 \item{x}{the functional spatial data.}

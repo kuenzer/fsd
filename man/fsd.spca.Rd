@@ -4,8 +4,16 @@
 \alias{fsd.spca}
 \title{Perform Spectral Principal Components Analysis on Spatial Functional Data}
 \usage{
-fsd.spca(X, freq.res = 100, Npc = 3, L = 3, q = NULL,
-  na.ignore = TRUE, return.F = FALSE, only.filters = FALSE)
+fsd.spca(
+  X,
+  freq.res = 100,
+  Npc = 3,
+  L = 3,
+  q = NULL,
+  na.ignore = TRUE,
+  return.F = FALSE,
+  only.filters = FALSE
+)
 }
 \arguments{
 \item{X}{the functional spatial data. Either an fd object or an array.}

@@ -4,9 +4,19 @@
 \alias{fsd.plot.covariance}
 \title{Plot the autocovariance operator of functional spatial data}
 \usage{
-fsd.plot.covariance(X, basisobj = NULL, q = 0, gridsize = NULL,
-  set.dims = NULL, plot.cor = FALSE, na.rm = FALSE, main = NULL,
-  xlab = NULL, ylab = NULL, ...)
+fsd.plot.covariance(
+  X,
+  basisobj = NULL,
+  q = 0,
+  gridsize = NULL,
+  set.dims = NULL,
+  plot.cor = FALSE,
+  na.rm = FALSE,
+  main = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ...
+)
 }
 \arguments{
 \item{X}{the functional spatial data. Either an fd object or an array.}

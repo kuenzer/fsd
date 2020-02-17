@@ -4,7 +4,7 @@
 \alias{fsd.jb.test}
 \title{Perform a Jarque-Bera Test on Normality of Functional Spatial Data}
 \usage{
-fsd.jb.test(X.spca, Npc = NULL, L = NULL)
+fsd.jb.test(X.spca, Npc = NULL, L = NULL, var.method = "integral")
 }
 \arguments{
 \item{X.spca}{a spectral principal components analysis as performed by
@@ -15,6 +15,9 @@ estimated SPC scores and the estimated spectral density.}
 
 \item{L}{the maximum lag to compute the covariance of the scores during the
 computation of the autocovariances.}
+
+\item{var.method}{the method that is used to calculate the long-run variance
+of the SFPC scores. Either "direct" or "integral".}
 }
 \value{
 A list with components \item{T4}{the test statistic.}
