@@ -165,15 +165,19 @@ fsd.plot.covariance = function (X, basisobj = NULL, q = 0, gridsize = NULL,
   filled.contour(rep(-q[1]:q[1], each=lgr) + gr, rep(-q[2]:q[2], each=lgr) + gr,
                  bigC, xlim = c(-q[1],q[1]+1), ylim = c(-q[2],q[2]+1),
                  asp = 1, xlab = xlab, ylab = ylab,
-                 plot.axes = {d1p = pretty(-q[1]:q[1], n = 10)
-                   axis(1, at = d1p+0.5, labels = d1p, tick = singlebasis)
-                   if (!only.1d) {
-                     d2p = pretty(-q[2]:q[2], n = 10)
-                     axis(2, at = d2p+0.5, labels = d2p, tick = singlebasis)
-                   }
-                   if (!singlebasis)
-                     abline(v = -q[1]:(q[1]+1),
-                            h = -q[2]:(q[2]+1), col = 8)
+                 plot.axes = {d1p = -q[1]:q[1]
+                 if (length(d1p) > 10)
+                   d1p = pretty(d1p, n = 10)
+                 axis(1, at = d1p+0.5, labels = d1p, tick = singlebasis)
+                 if (!only.1d) {
+                   d2p = -q[2]:q[2]
+                   if (length(d2p) > 10)
+                     d2p = pretty(d2p, n = 10)
+                   axis(2, at = d2p+0.5, labels = d2p, tick = singlebasis)
+                 }
+                 if (!singlebasis)
+                   abline(v = -q[1]:(q[1]+1),
+                          h = -q[2]:(q[2]+1), col = 8)
                  },
                  frame.plot = FALSE, main = main, ...)
 }

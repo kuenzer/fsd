@@ -45,10 +45,14 @@ fsd.z.plot = function (Zlist, positions, basisobj = NULL, gridsize = 50, ...)
        xlim = xlim + c(-0.5, 0.5), ylim = ylim + c(-0.5, 0.5),
        xaxt = 'n', yaxt = 'n', frame.plot = FALSE, ...)
 
-  d1p = pretty(xlim[1]:xlim[2], n = 10)
+  d1p = xlim[1]:xlim[2]
+  if (length(d1p) > 10)
+    d1p = pretty(d1p, n = 10)
   axis(1, at = d1p, labels = d1p, tick = FALSE)
   if (!only.1d) {
-    d2p = pretty(ylim[1]:ylim[2], n = 10)
+    d2p = ylim[1]:ylim[2]
+    if (length(d2p) > 10)
+      d2p = pretty(d2p, n = 10)
     axis(2, at = d2p, labels = d2p, tick = FALSE)
   }
 
