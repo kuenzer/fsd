@@ -83,6 +83,11 @@ fsd.plot.covariance = function (X, basisobj = NULL, q = 0, gridsize = NULL,
   inds[-freedims] = set.dims[!is.nan(set.dims)]
   hlist = unfold(inds)
 
+  singlebasis = (basisobj$nbasis == 1)
+
+  if (singlebasis)
+    gridsize = 2
+
   if (is.null(gridsize))
     gridsize = max(40, ceiling(c(200, 8 * basisobj$nbasis)/(2*min(q) + 1)))
 
@@ -160,13 +165,15 @@ fsd.plot.covariance = function (X, basisobj = NULL, q = 0, gridsize = NULL,
   filled.contour(rep(-q[1]:q[1], each=lgr) + gr, rep(-q[2]:q[2], each=lgr) + gr,
                  bigC, xlim = c(-q[1],q[1]+1), ylim = c(-q[2],q[2]+1),
                  asp = 1, xlab = xlab, ylab = ylab,
-                 plot.axes = {axis(1, at = -q[1]:q[1]+0.5,
-                                   labels = -q[1]:q[1], tick = FALSE)
-                              if (!only.1d) {
-                                axis(2, at = -q[2]:q[2]+0.5,
-                                     labels = -q[2]:q[2], tick = FALSE)
-                              }
-                              abline(v = -q[1]:(q[1]+1),
-                                     h = -q[2]:(q[2]+1), col = 8)},
+                 plot.axes = {d1p = pretty(-q[1]:q[1], n = 10)
+                   axis(1, at = d1p+0.5, labels = d1p, tick = singlebasis)
+                   if (!only.1d) {
+                     d2p = pretty(-q[2]:q[2], n = 10)
+                     axis(2, at = d2p+0.5, labels = d2p, tick = singlebasis)
+                   }
+                   if (!singlebasis)
+                     abline(v = -q[1]:(q[1]+1),
+                            h = -q[2]:(q[2]+1), col = 8)
+                 },
                  frame.plot = FALSE, main = main, ...)
 }
