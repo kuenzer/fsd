@@ -175,9 +175,12 @@ fsd.plot.covariance = function (X, basisobj = NULL, q = 0, gridsize = NULL,
                      d2p = pretty(d2p, n = 10)
                    axis(2, at = d2p+0.5, labels = d2p, tick = singlebasis)
                  }
-                 if (!singlebasis)
-                   abline(v = -q[1]:(q[1]+1),
-                          h = -q[2]:(q[2]+1), col = 8)
+                 if (!singlebasis) {
+                   segments(-q[1]:(q[1]+1), -q[2], -q[1]:(q[1]+1), q[2]+1,
+                            col = 8)
+                   segments(-q[1], -q[2]:(q[2]+1), q[1]+1, -q[2]:(q[2]+1),
+                            col = 8)
+                 }
                  },
                  frame.plot = FALSE, main = main, ...)
 }
