@@ -52,7 +52,11 @@ fsd.jb.test = function (X.spca, Npc = NULL, L = NULL, var.method = "integral")
     hlist = fsd:::unfold(lapply(L, function(h) {-h:h}))
     Clist = sapply(hlist, FUN = fsd.covariance, Y = Y, centered = TRUE,
                    simplify = "array")
-    C = apply(Clist, 3,diag)
+    if (is.null(dim(Clist))) {
+      C = Clist
+      dim(C) = c(1, length(C))
+    } else
+      C = apply(Clist, 3, diag)
   } else
     C = fsd.spca.cov(F = X.spca$F, L = L)$cov
 
