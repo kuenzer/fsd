@@ -61,12 +61,14 @@ fsd.sfarma = function (n, Sigma = NULL, ARfilter = NULL, MAfilter = NULL,
   if (!is.null(MAfilter) && !inherits(MAfilter, "fsd.filter"))
     stop("MAfilter needs to be a filter object.")
 
+  n2 = n + 2*burnin
+
   if (!is.numeric(noise) || noise == 0)
-    Z = array(t(rmvnorm(prod(n + 2*burnin), sigma = Sigma)),
-              dim = c(d, n + 2*burnin))
+    Z = array(t(rmvnorm(prod(n2), sigma = Sigma)),
+              dim = c(d, n2))
   else
-    Z = array(t(rmvt(prod(n + 2*burnin), sigma = Sigma, df = noise)),
-              dim = c(d, n + 2*burnin))
+    Z = array(t(rmvt(prod(n2), sigma = Sigma, df = noise)),
+              dim = c(d, n2))
 
   if (!is.null(MAfilter))
     Z = fsd.spca.scores(X = Z, A = MAfilter)
@@ -80,10 +82,12 @@ fsd.sfarma = function (n, Sigma = NULL, ARfilter = NULL, MAfilter = NULL,
     }
     if (!do.fixed.point) {
       message("Unilateral AR-filter permits ordinary recursive computation.")
-      maxARlag = sapply(split(unlist(ARfilter$laglist),f = seq(r)), max)
-      for (i in 1:prod(n + 2*burnin)) {
-        ind = arrayInd(i, n + 2*burnin)
-        if (any(ind < 1 + maxARlag))
+      splitlag = split(unlist(ARfilter$laglist),f = seq(r))
+      minInd = 1 + sapply(splitlag, max)
+      maxInd = n2 + sapply(splitlag, min)
+      for (i in 1:prod(n2)) {
+        ind = arrayInd(i, n2)
+        if (any(ind < minInd) || any(ind > maxInd))
           next
 
         for (k in 1:length(ARfilter$operators)) {
