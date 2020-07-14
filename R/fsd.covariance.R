@@ -31,13 +31,13 @@ fsd.covariance = function (Y = NULL, h, centered = FALSE, na.rm = FALSE,
   if (any(n - abs(h) <= 0))
     return(NULL)
 
+  if (!centered)
+    Y = Y - apply(Y, 1, mean, na.rm = na.rm)
+
   if (na.rm) {
     Yna = apply(is.na(Y), 1+1:r, any)
     Y[1:dim(Y)[1] + dim(Y)[1] * rep(which(Yna) - 1, each = dim(Y)[1])] = 0
   }
-
-  if (!centered)
-    Y = Y - apply(Y, 1, mean)
 
   ind2 = mapply(function(ni, hi){max(-hi, 0) + 1:(ni - abs(hi))}, n, h,
                 SIMPLIFY = FALSE)
